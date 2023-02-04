@@ -1,3 +1,10 @@
-export default function AllPokemon(){
-    return <h1>AllPokemon</h1>
-}
+import React from 'react';
+import PokemonList from '..//Components/GetAllPokemon';
+
+const App = () => (
+    <div>
+        <PokemonList/>
+    </div>
+);
+
+export default App;

@@ -21,9 +21,9 @@ function Navbar() {
             </div>
             <nav ref={navRef}>
                 <Link to="/Home">Home</Link>
-                <Link to="/SearchPage">SearchPage</Link>
-                <Link to="/AllPokemon">AllPokemon</Link>
-                <Link to="/FavoritePokemon">FavoritePokemon</Link>
+                <Link to="/SearchPage">Search Pokemon</Link>
+                <Link to="/AllPokemon">All Pokemon</Link>
+                <Link to="/FavoritePokemon">Favorite Pokemon</Link>
                 <button className="nav-btn nav-close-btn " onClick={showNavbar}>
                     <FaTimes/>
                 </button>
