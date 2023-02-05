@@ -6,22 +6,26 @@
     box-sizing: border-box;
     font-family: "Titillium Web", sans-serif;
 }
-body{
+
+body {
     background-color: var(--mainColorLight);
 }
-.pokemoncard{
+
+.pokemoncard {
     width: 300px;
     margin: auto;
     padding-top: 10px;
     margin-top: 20px;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(200px,0.5fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
     grid-gap: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 5px 5px rgba(0,0,0,0.5);
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
     align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
     background-color: var(--mainColor);
+    color: var(--navTextColor);
 
 }
+

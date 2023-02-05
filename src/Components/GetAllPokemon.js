@@ -13,7 +13,6 @@ const PokemonList = () => {
             .then((res) => setPokemonList(res.data.results))
             .catch((err) => console.error(err));
     };
-
     return (
         <div>
             <h2>Choose the generation you want to see all the pokemon off</h2>
@@ -32,7 +31,7 @@ const PokemonList = () => {
             {pokemonList.map((pokemon) => (
                 <div className="pokemoncard" key={pokemon.name}>
                     <div className="pokemonInfo">
-                        <h2>{pokemon.name}</h2>
+                        <h2 className="pokemonName">{pokemon.name}</h2>
                         <img
                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.split('/')[6]}.png`}
                             alt={pokemon.name}/>

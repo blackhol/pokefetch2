@@ -5,6 +5,7 @@ import Home from "./Pages/Home";
 import SearchPage from "./Pages/SearchPage";
 import FavoritePokemon from "./Pages/FavoritePokemon";
 import AllPokemon from "./Pages/AllPokemon";
+import LogInPage from "./Pages/LogInPage";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                     <Route path="/SearchPage" element={<SearchPage/>}/>
                     <Route path="/FavoritePokemon" element={<FavoritePokemon/>}/>
                     <Route path="/AllPokemon" element={<AllPokemon/>}/>
+                    <Route path="/LogInPage" element={<LogInPage/>}/>
                 </Routes>
             </div>
         </React.Fragment>

@@ -47,14 +47,14 @@ const PokemonInfo = () => {
     }, [pokemon]);
     return (
         <div className="body">
-            <div className="left-side" style={{ width: "50%" }}>
+            <div className="left-side">
                 <form onSubmit={handleSubmit}>
                     <input type="text" name="pokemonName" value={pokemonName}
                            onChange={(e) => setPokemonName(e.target.value)}/>
                     <button type="submit">Search</button>
                 </form>
                 {pokemon.name ? (
-                    <div className="right-side" style={{ width: "50%", float: "right" }}>
+                    <div className="right-side">
                         <h2>{pokemon.name}</h2>
                         <h2>pokedexID:{pokemon.id}</h2>
                         <img src={pokemon.sprites.front_default} alt={pokemon.name}/>
@@ -67,19 +67,20 @@ const PokemonInfo = () => {
                     </div>
                 ) : null}
             </div>
-                {suggestions.length > 0 && (
-                    <ul className="listOfPokemon">
-                        {suggestions.map((name) => (
-                            <li key={name} onClick={() => handleSuggestionClick(name)}>
-                                {name}
-                            </li>
-                        ))}
-                    </ul>
-                )}
-                {pokemon.name ? null : (
-                    <p>Enter a Pokemon name to search</p>
-                )}
-            </div>
+            {suggestions.length > 0 && (
+                <ul className="listOfPokemon">
+                    {suggestions.map((name) => (
+                        <li key={name} onClick={() => handleSuggestionClick(name)}>
+                            {name}
+                        </li>
+                    ))}
+                </ul>
+            )}
+            {pokemon.name ? null : (
+                <p>Enter a Pokemon name to search</p>
+            )}
+            {pokemon.detail && <p>Error: Pokemon not found</p>}
+        </div>
 
     );
 };

@@ -1,16 +1,18 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: "Titillium Web", sans-serif;
 }
-body{
+
+body {
     background-color: purple;
 }
-foundPokemon{
-    background-color: red;
-    color: red;
+left-side {
+    width: 50%
 }
-listOfPokemon{
-    background-color: aqua;
+
+right-side {
+    width: 50%;
+    float: right;
 }

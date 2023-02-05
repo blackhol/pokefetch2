@@ -11,8 +11,8 @@
     --mainColor: #6D6D6D;
     --mainColorLight: #D9D9D9;
     --secondaryColor: #2898FF;
-    --textColor:#7B7B7B;
-    --navTextColor:#D9D9D9;
+    --textColor: #7B7B7B;
+    --navTextColor: #D9D9D9;
 }
 
 header {
@@ -24,9 +24,10 @@ header {
     background-color: var(--mainColor);
     color: var(--navTextColor);
 }
-header .navLogo{
+
+header .navLogo {
     /* Logo */
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     height: 80px;
@@ -35,6 +36,7 @@ header .navLogo{
     border-radius: 20px;
 
 }
+
 nav a {
     margin: 0 1rem;
     color: var(--navTextColor);

@@ -20,10 +20,12 @@ function Navbar() {
                 </Link>
             </div>
             <nav ref={navRef}>
+
                 <Link to="/Home">Home</Link>
                 <Link to="/SearchPage">Search Pokemon</Link>
                 <Link to="/AllPokemon">All Pokemon</Link>
                 <Link to="/FavoritePokemon">Favorite Pokemon</Link>
+                <Link to="/LogInPage">LogIn</Link>
                 <button className="nav-btn nav-close-btn " onClick={showNavbar}>
                     <FaTimes/>
                 </button>

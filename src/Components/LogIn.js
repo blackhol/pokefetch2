@@ -1,12 +1,12 @@
-import { useState } from "react";
+import {useState} from "react";
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     onAuthStateChanged,
     signOut,
 } from "firebase/auth";
-import "./App.css";
-import { auth } from "src/firebase-config.js";
+import "..//Styles/App.css";
+import {auth} from "..//Config/firebase-config.js";
 
 function LogIn() {
     const [registerEmail, setRegisterEmail] = useState("");
@@ -91,8 +91,9 @@ function LogIn() {
             <h4> User Logged In: </h4>
             {user?.email}
 
-            <button onClick={logout}> Sign Out </button>
+            <button onClick={logout}> Sign Out</button>
         </div>
     );
 }
+
 export default LogIn;
