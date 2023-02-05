@@ -62,6 +62,7 @@ function LogIn() {
                 />
                 <input
                     placeholder="Password..."
+                    type={"password"}
                     onChange={(event) => {
                         setRegisterPassword(event.target.value);
                     }}
@@ -80,6 +81,7 @@ function LogIn() {
                 />
                 <input
                     placeholder="Password..."
+                    type={"password"}
                     onChange={(event) => {
                         setLoginPassword(event.target.value);
                     }}
