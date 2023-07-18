@@ -1,11 +1,11 @@
 import React from "react";
 import NavBar from "./Components/NavBar";
 import {Route, Routes} from "react-router-dom";
-import Home from "./Pages/Home";
 import SearchPage from "./Pages/SearchPage";
 import FavoritePokemon from "./Pages/FavoritePokemon";
 import AllPokemon from "./Pages/AllPokemon";
 import LogInPage from "./Pages/LogInPage";
+import Home from "./Pages/Home";
 
 function App() {
     return (
@@ -20,7 +20,9 @@ function App() {
                     <Route path="/LogInPage" element={<LogInPage/>}/>
                 </Routes>
             </div>
+
         </React.Fragment>
     )
+
 }
 export default App;
