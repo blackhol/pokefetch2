@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import "..//Styles/SearchPage.css";
 
 const PokemonInfo = () => {
@@ -47,14 +47,14 @@ const PokemonInfo = () => {
     }, [pokemon]);
     return (
         <div className="body">
-            <div className="left-side">
+            <section className="left-side">
                 <form onSubmit={handleSubmit}>
                     <input type="text" name="pokemonName" value={pokemonName}
                            onChange={(e) => setPokemonName(e.target.value)}/>
                     <button type="submit">Search</button>
                 </form>
                 {pokemon.name ? (
-                    <div className="right-side">
+                    <section className="right-side">
                         <h2>{pokemon.name}</h2>
                         <h2>pokedexID:{pokemon.id}</h2>
                         <img src={pokemon.sprites.front_default} alt={pokemon.name}/>
@@ -64,9 +64,9 @@ const PokemonInfo = () => {
                         <p>
                             Types: {pokemon.types.map(t => t.type.name).join(", ")}
                         </p>
-                    </div>
+                    </section>
                 ) : null}
-            </div>
+            </section>
             {suggestions.length > 0 && (
                 <ul className="listOfPokemon">
                     {suggestions.map((name) => (

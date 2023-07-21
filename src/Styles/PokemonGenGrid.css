@@ -3,7 +3,6 @@
     grid-template-columns: repeat(4, 1fr); /* Adjust the number to your desired columns */
     grid-gap: 20px; /* Adjust the gap between grid items */
 }
-
 .pokemon-item {
     display: flex;
     justify-content: center;
@@ -14,8 +13,7 @@
     background-color: #f0f0f0;
     border: 1px solid #ccc;
 }
-
-.pokemon-item img {
+.cover {
     max-width: 100%;
     max-height: 100%;
 }

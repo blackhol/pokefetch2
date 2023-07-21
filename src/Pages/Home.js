@@ -9,16 +9,13 @@ const Home = () => {
         <div className="welcome-container">
             <h1>Welcome to the Pokedex App!</h1>
             <p>Start your journey to become a Pokemon Master.</p>
-            <a href="http://localhost:3000/SearchPage">
-                <Button text={"Get Started"}/>
-            </a>
+            <Button text={"Get Started"} URLlink={"http://localhost:3000/SearchPage"}/>
             <section className={"generationSelect"}>
                 <h2>select a pokemon generation to see all the pokemons from that generation</h2>
                 <PokemonGenGrid/>
             </section>
-            </div>
-
-);
+        </div>
+    );
 
 };
 

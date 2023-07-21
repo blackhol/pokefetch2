@@ -9,7 +9,8 @@ import pokemonGEN6 from '..//Assets/PokemonGEN6.jpg';
 import pokemonGEN7 from '..//Assets/PokemonGEN7.jpg';
 import pokemonGEN8 from '..//Assets/PokemonGEN8.jpg';
 import pokemonGEN9 from '..//Assets/PokemonGEN9.jpg';
-function PokemonGenGrid(){
+
+function PokemonGenGrid() {
     const pokemonImages = [
         pokemonGEN1,
         pokemonGEN2,
@@ -22,16 +23,17 @@ function PokemonGenGrid(){
         pokemonGEN9,
 
     ];
-
     return (
-        <div className="pokemonGen-grid">
+        <article className="pokemonGen-grid">
             {pokemonImages.map((imageUrl, index) => (
-                     <div key={index} className="pokemon-item">
-                        <img src={imageUrl} alt={`PokemonGEN ${index + 1}`} />
+                <div key={index} className="pokemon-item">
+                    <img className={"cover"} src={imageUrl} alt={`PokemonGEN ${index + 1}`}/>
+                    <a className={"cover"} href={"http://localhost:3000/SearchPage"}>
                         <p>PokemonGEN {index + 1}</p>
-                    </div>
+                    </a>
+                </div>
             ))}
-        </div>
+        </article>
     );
 }
 

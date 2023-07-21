@@ -2,9 +2,9 @@ import React from 'react';
 import PokemonList from '..//Components/GetAllPokemon';
 
 const App = () => (
-    <div>
+    <article>
         <PokemonList/>
-    </div>
+    </article>
 );
 
 export default App;

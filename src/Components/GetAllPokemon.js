@@ -14,7 +14,7 @@ const PokemonList = () => {
             .catch((err) => console.error(err));
     };
     return (
-        <div>
+        <section>
             <h2>Choose the generation you want to see all the pokemon off</h2>
             <select defaultValue="151" value={generation} onChange={handleGenerationChange}>
                 <option value="151">Generation 1</option>
@@ -29,16 +29,16 @@ const PokemonList = () => {
             </select>
 
             {pokemonList.map((pokemon) => (
-                <div className="pokemoncard" key={pokemon.name}>
+                <section className="pokemoncard" key={pokemon.name}>
                     <div className="pokemonInfo">
                         <h2 className="pokemonName">{pokemon.name}</h2>
                         <img
                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.split('/')[6]}.png`}
                             alt={pokemon.name}/>
                     </div>
-                </div>
+                </section>
             ))}
-        </div>
+        </section>
     );
 };
 export default PokemonList;

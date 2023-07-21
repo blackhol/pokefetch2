@@ -5,7 +5,6 @@ import {
     onAuthStateChanged,
     signOut,
 } from "firebase/auth";
-import "..//Styles/App.css";
 import {auth} from "..//Config/firebase-config.js";
 
 function LogIn() {
@@ -52,7 +51,7 @@ function LogIn() {
 
     return (
         <div className="App">
-            <div>
+            <section>
                 <h3> Register User </h3>
                 <input
                     placeholder="Email..."
@@ -69,9 +68,9 @@ function LogIn() {
                 />
 
                 <button onClick={register}> Create User</button>
-            </div>
+            </section>
 
-            <div>
+            <section>
                 <h3> Login </h3>
                 <input
                     placeholder="Email..."
@@ -88,7 +87,7 @@ function LogIn() {
                 />
 
                 <button onClick={login}> Login</button>
-            </div>
+            </section>
 
             <h4> User Logged In: </h4>
             {user?.email}

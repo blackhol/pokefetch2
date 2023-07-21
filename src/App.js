@@ -11,7 +11,7 @@ function App() {
     return (
         <React.Fragment>
             <NavBar/>
-            <div className="container">
+            <section className="container">
                 <Routes>
                     <Route path="/Home" element={<Home/>}/>
                     <Route path="/SearchPage" element={<SearchPage/>}/>
@@ -19,7 +19,7 @@ function App() {
                     <Route path="/AllPokemon" element={<AllPokemon/>}/>
                     <Route path="/LogInPage" element={<LogInPage/>}/>
                 </Routes>
-            </div>
+            </section>
 
         </React.Fragment>
     )

@@ -30,7 +30,7 @@ const App = () => {
             />
             <button onClick={handleSearch}>Search</button>
             {error && <p>{error}</p>}
-            <div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: "10px"}}>
+            <section style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: "10px"}}>
                 {pokemonData.map((pokemon) => (
                     <div key={pokemon.name}>
                         <h2>{pokemon.name}</h2>
@@ -39,7 +39,7 @@ const App = () => {
                         <p>Weight: {pokemon.weight}</p>
                     </div>
                 ))}
-            </div>
+            </section>
         </div>
     );
 };

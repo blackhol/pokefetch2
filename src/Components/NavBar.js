@@ -9,15 +9,13 @@ function Navbar() {
     const showNavbar = () => {
         navRef.current.classList.toggle("responsive_nav");
     };
-
     return (
-
         <header>
-            <div>
+            <section>
                 <Link to="/Home">
                     <img className="navLogo" src={pokefetchLogo} alt="pokefetch logo"/>
                 </Link>
-            </div>
+            </section>
             <nav ref={navRef}>
 
                 <Link to="/Home">Home</Link>
@@ -32,9 +30,7 @@ function Navbar() {
             <button className="nav-btn nav-close-btn" onClick={showNavbar}>
                 <FaBars/>
             </button>
-
         </header>
     );
 }
-
 export default Navbar;
