@@ -1,100 +1,56 @@
-import {useState} from "react";
-import {
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-    onAuthStateChanged,
-    signOut,
-} from "firebase/auth";
-import {auth} from "..//Config/firebase-config.js";
+import { useState } from "react";
+import { useAuth } from "../Config/AuthContext";
 
-function LogIn() {
-    const [registerEmail, setRegisterEmail] = useState("");
-    const [registerPassword, setRegisterPassword] = useState("");
-    const [loginEmail, setLoginEmail] = useState("");
-    const [loginPassword, setLoginPassword] = useState("");
+function Login() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const { currentUser, login, logout } = useAuth();
 
-    const [user, setUser] = useState({});
-
-    onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
-    });
-
-    const register = async () => {
+    const handleLogin = async () => {
         try {
-            const user = await createUserWithEmailAndPassword(
-                auth,
-                registerEmail,
-                registerPassword
-            );
-            console.log(user);
+            await login(email, password);
+            // If successful, you can navigate to another page or display a success message.
         } catch (error) {
-            console.log(error.message);
+            console.log("Login Error:", error.message);
         }
     };
 
-    const login = async () => {
+    const handleLogout = async () => {
         try {
-            const user = await signInWithEmailAndPassword(
-                auth,
-                loginEmail,
-                loginPassword
-            );
-            console.log(user);
+            await logout();
+            // If successful, you can navigate to another page or display a success message.
         } catch (error) {
-            console.log(error.message);
+            console.log("Logout Error:", error.message);
         }
-    };
-
-    const logout = async () => {
-        await signOut(auth);
     };
 
     return (
-        <div className="App">
-            <section>
-                <h3> Register User </h3>
-                <input
-                    placeholder="Email..."
-                    onChange={(event) => {
-                        setRegisterEmail(event.target.value);
-                    }}
-                />
-                <input
-                    placeholder="Password..."
-                    type={"password"}
-                    onChange={(event) => {
-                        setRegisterPassword(event.target.value);
-                    }}
-                />
-
-                <button onClick={register}> Create User</button>
-            </section>
-
-            <section>
-                <h3> Login </h3>
-                <input
-                    placeholder="Email..."
-                    onChange={(event) => {
-                        setLoginEmail(event.target.value);
-                    }}
-                />
-                <input
-                    placeholder="Password..."
-                    type={"password"}
-                    onChange={(event) => {
-                        setLoginPassword(event.target.value);
-                    }}
-                />
-
-                <button onClick={login}> Login</button>
-            </section>
-
-            <h4> User Logged In: </h4>
-            {user?.email}
-
-            <button onClick={logout}> Sign Out</button>
+        <div>
+            {currentUser ? (
+                <div>
+                    <h2>Welcome, {currentUser.email}!</h2>
+                    <button onClick={handleLogout}>Logout</button>
+                </div>
+            ) : (
+                <div>
+                    <h2>Login</h2>
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <button onClick={handleLogin}>Login</button>
+                </div>
+            )}
         </div>
     );
 }
 
-export default LogIn;
+export default Login;
