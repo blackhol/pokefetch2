@@ -1,0 +1,15 @@
+.pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.pokemon-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.pokemon-card.favorite {
+    background-color: cornflowerblue; /* Light pink background for favorite Pokemon */
+}

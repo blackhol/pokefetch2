@@ -1,7 +1,7 @@
 .pokemonGen-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* Adjust the number to your desired columns */
-    grid-gap: 20px; /* Adjust the gap between grid items */
+    grid-gap: 40px; /* Adjust the gap between grid items */
 }
 .pokemon-item {
     display: flex;
