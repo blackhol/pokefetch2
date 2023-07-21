@@ -1,0 +1,8 @@
+.overlay{
+    display: flex;
+    background-color: #6D6D6D;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}

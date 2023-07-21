@@ -1,17 +1,37 @@
 import React, {useEffect, useState} from "react";
 import "..//Styles/SearchPage.css";
+import LoadingScreen from "../Components/LoadingScreen";
 
 const PokemonInfo = () => {
     const [pokemon, setPokemon] = useState({});
     let [pokemonName, setPokemonName] = useState("");
     const [suggestions, setSuggestions] = useState([]);
-    useEffect(() => {
-        if (!pokemonName) return;
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
-        fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-            .then((res) => res.json())
-            .then((data) => setPokemon(data));
-    }, [pokemonName]);
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setLoading(true);
+        const name = event.target.elements.pokemonName.value;
+        fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+            .then((res) => {
+                if (res.ok) return res.json();
+                throw new Error("Pokemon not found");
+            })
+            .then((data) => {
+                setPokemon(data);
+                setPokemonName(name);
+                setSuggestions([]);
+                setError(null);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error(error);
+                setPokemon({});
+                setError("pokemon not found")
+                setLoading(false);
+            });
+    };
 
     useEffect(() => {
         if (!pokemonName) return setSuggestions([]);
@@ -20,11 +40,6 @@ const PokemonInfo = () => {
             .then((res) => res.json())
             .then((data) => setSuggestions(data.results.map((p) => p.name)));
     }, [pokemonName]);
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setPokemonName(event.target.elements.pokemonName.value);
-    };
     let handleSuggestionClick = (name) => {
         setPokemonName(name);
         setSuggestions([]);
@@ -32,38 +47,56 @@ const PokemonInfo = () => {
     useEffect(() => {
         if (pokemon.weight) {
             if (pokemon.weight <= 100) {
-                pokemon.weight = 0 + '.' + pokemon.weight;
+                pokemon.weight = 0 + "." + pokemon.weight;
             } else {
-                pokemon.weight = pokemon.weight.toString().charAt(0) + pokemon.weight.toString().charAt(1) + "." + pokemon.weight.toString().charAt(2);
+                pokemon.weight =
+                    pokemon.weight.toString().charAt(0) +
+                    pokemon.weight.toString().charAt(1) +
+                    "." +
+                    pokemon.weight.toString().charAt(2);
             }
         }
+
         if (pokemon.height) {
             if (pokemon.height <= 9) {
-                pokemon.height = 0 + '.' + pokemon.height;
+                pokemon.height = 0 + "." + pokemon.height;
             } else {
-                pokemon.height = pokemon.height.toString().charAt(0) + "." + pokemon.height.toString().charAt(1) + pokemon.height.toString().charAt(2);
+                pokemon.height =
+                    pokemon.height.toString().charAt(0) +
+                    "." +
+                    pokemon.height.toString().charAt(1) +
+                    pokemon.height.toString().charAt(2);
             }
         }
     }, [pokemon]);
+
     return (
         <div className="body">
             <section className="left-side">
                 <form onSubmit={handleSubmit}>
-                    <input type="text" name="pokemonName" value={pokemonName}
-                           onChange={(e) => setPokemonName(e.target.value)}/>
+                    {pokemon.name ? null : <p>Enter a Pokemon name to search</p>}
+                    {pokemon.detail && <p>Error: Pokemon not found</p>}
+                    <input
+                        type="text"
+                        name="pokemonName"
+                        value={pokemonName}
+                        onChange={(e) => setPokemonName(e.target.value)}
+                    />
                     <button type="submit">Search</button>
                 </form>
-                {pokemon.name ? (
+                {loading ? (
+                    <LoadingScreen />
+                ): error ? (
+                    <p>{error}</p>
+                ) : pokemon.name ? (
                     <section className="right-side">
                         <h2>{pokemon.name}</h2>
                         <h2>pokedexID:{pokemon.id}</h2>
-                        <img src={pokemon.sprites.front_default} alt={pokemon.name}/>
+                        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                         <p>
                             Height: {pokemon.height}M | Weight: {pokemon.weight}KG
                         </p>
-                        <p>
-                            Types: {pokemon.types.map(t => t.type.name).join(", ")}
-                        </p>
+                        <p>Types: {pokemon.types.map((t) => t.type.name).join(", ")}</p>
                     </section>
                 ) : null}
             </section>
@@ -76,12 +109,7 @@ const PokemonInfo = () => {
                     ))}
                 </ul>
             )}
-            {pokemon.name ? null : (
-                <p>Enter a Pokemon name to search</p>
-            )}
-            {pokemon.detail && <p>Error: Pokemon not found</p>}
         </div>
-
     );
 };
 
