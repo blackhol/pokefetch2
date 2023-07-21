@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from "react";
-import "..//Styles/SearchPage.css";
+import React, { useEffect, useState } from "react";
+import "../Styles/SearchPage.css";
 import LoadingScreen from "../Components/LoadingScreen";
 
 const PokemonInfo = () => {
@@ -28,7 +28,7 @@ const PokemonInfo = () => {
             .catch((error) => {
                 console.error(error);
                 setPokemon({});
-                setError("pokemon not found")
+                setError("pokemon not found");
                 setLoading(false);
             });
     };
@@ -40,10 +40,12 @@ const PokemonInfo = () => {
             .then((res) => res.json())
             .then((data) => setSuggestions(data.results.map((p) => p.name)));
     }, [pokemonName]);
+
     let handleSuggestionClick = (name) => {
         setPokemonName(name);
         setSuggestions([]);
     };
+
     useEffect(() => {
         if (pokemon.weight) {
             if (pokemon.weight <= 100) {
@@ -86,17 +88,27 @@ const PokemonInfo = () => {
                 </form>
                 {loading ? (
                     <LoadingScreen />
-                ): error ? (
+                ) : error ? (
                     <p>{error}</p>
                 ) : pokemon.name ? (
                     <section className="right-side">
                         <h2>{pokemon.name}</h2>
-                        <h2>pokedexID:{pokemon.id}</h2>
+                        <h2>Pokedex ID: {pokemon.id}</h2>
                         <img src={pokemon.sprites.front_default} alt={pokemon.name} />
                         <p>
                             Height: {pokemon.height}M | Weight: {pokemon.weight}KG
                         </p>
                         <p>Types: {pokemon.types.map((t) => t.type.name).join(", ")}</p>
+                        <p>Abilities: {pokemon.abilities.map((a) => a.ability.name).join(", ")}</p>
+                        <p>Base Experience: {pokemon.base_experience}</p>
+                        <p>Stats:</p>
+                        <ul>
+                            {pokemon.stats.map((stat) => (
+                                <li key={stat.stat.name}>
+                                    {stat.stat.name}: {stat.base_stat}
+                                </li>
+                            ))}
+                        </ul>
                     </section>
                 ) : null}
             </section>

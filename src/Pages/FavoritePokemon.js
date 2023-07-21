@@ -1,23 +1,45 @@
-import React, {useState} from "react";
-
+import React, {useEffect, useState} from "react";
+import "..//Styles/FavoritePokemon.css"; // Add a separate CSS file for styling
 const App = () => {
     const [favoritePokemon, setFavoritePokemon] = useState("");
     const [pokemonData, setPokemonData] = useState([]);
     const [error, setError] = useState("");
 
     const handleSearch = async () => {
-        if (pokemonData.find((p) => p.name === favoritePokemon)) {
-            setError(`${favoritePokemon} has already been searched`);
+        const searchedPokemon = favoritePokemon.toLowerCase();
+        if (pokemonData.find((p) => p.name === searchedPokemon)) {
+            setError(`${searchedPokemon} has already been searched`);
         } else {
             try {
-                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${favoritePokemon.toLowerCase()}`);
+                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchedPokemon}`);
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
                 const data = await response.json();
-                setPokemonData([...pokemonData, data]);
+                setPokemonData((prevData) => [...prevData, { ...data, isFavorite: false }]);
                 setError("");
             } catch (error) {
-                setError(`${favoritePokemon} was not found`);
+                setError(`${searchedPokemon} was not found`);
             }
         }
+    };
+    useEffect(() => {
+        const storedFavoritePokemon = localStorage.getItem("favoritePokemon");
+        if (storedFavoritePokemon) {
+            setPokemonData(JSON.parse(storedFavoritePokemon));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("favoritePokemon", JSON.stringify(pokemonData));
+    }, [pokemonData]);
+
+    const handleFavoriteToggle = (pokemonName) => {
+        setPokemonData((prevData) =>
+            prevData.map((pokemon) =>
+                pokemon.name === pokemonName ? { ...pokemon, isFavorite: !pokemon.isFavorite } : pokemon
+            )
+        );
     };
 
     return (
@@ -30,16 +52,33 @@ const App = () => {
             />
             <button onClick={handleSearch}>Search</button>
             {error && <p>{error}</p>}
-            <section style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: "10px"}}>
+            <section className="pokemon-grid">
                 {pokemonData.map((pokemon) => (
-                    <div key={pokemon.name}>
-                        <h2>{pokemon.name}</h2>
-                        <img src={pokemon.sprites.front_default} alt={pokemon.name}/>
-                        <p>Height: {pokemon.height}</p>
-                        <p>Weight: {pokemon.weight}</p>
-                    </div>
+                    <PokemonCard
+                        key={pokemon.name}
+                        pokemon={pokemon}
+                        onFavoriteToggle={handleFavoriteToggle}
+                    />
                 ))}
             </section>
+        </div>
+    );
+};
+
+const PokemonCard = ({ pokemon, onFavoriteToggle }) => {
+    const { name, sprites, height, weight, types, isFavorite } = pokemon;
+
+    const handleFavoriteClick = () => {
+        onFavoriteToggle(name);
+    };
+
+    return (
+        <div className={`pokemon-card ${isFavorite ? "favorite" : ""}`} onClick={handleFavoriteClick}>
+            <h2>{name}</h2>
+            <img src={sprites.front_default} alt={name} />
+            <p>Height: {height}</p>
+            <p>Weight: {weight}</p>
+            <p>Types: {types.map((type) => type.type.name).join(", ")}</p>
         </div>
     );
 };
