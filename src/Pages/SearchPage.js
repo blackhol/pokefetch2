@@ -1,128 +1,82 @@
-import React, { useEffect, useState } from "react";
-import "../Styles/SearchPage.css";
-import LoadingScreen from "../Components/LoadingScreen";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import "..//Styles/GetAllPokemon.css";
 
-const PokemonInfo = () => {
-    const [pokemon, setPokemon] = useState({});
-    let [pokemonName, setPokemonName] = useState("");
-    const [suggestions, setSuggestions] = useState([]);
-    const [loading, setLoading] = useState(false);
+const PokemonList = () => {
+    const [pokemonList, setPokemonList] = useState([]);
+    const [generation, setGeneration] = useState("151");
     const [error, setError] = useState(null);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        setLoading(true);
-        const name = event.target.elements.pokemonName.value;
-        fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
-            .then((res) => {
-                if (res.ok) return res.json();
-                throw new Error("Pokemon not found");
-            })
-            .then((data) => {
-                setPokemon(data);
-                setPokemonName(name);
-                setSuggestions([]);
-                setError(null);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.error(error);
-                setPokemon({});
-                setError("pokemon not found");
-                setLoading(false);
-            });
+    const handleGenerationChange = (event) => {
+        setGeneration(event.target.value);
     };
 
     useEffect(() => {
-        if (!pokemonName) return setSuggestions([]);
+        const fetchPokemonList = async () => {
+            try {
+                setError(null); // Reset error state before making a new request
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${generation}`);
+                const data = response.data;
+                setPokemonList(data.results);
+            } catch (err) {
+                console.error(err);
+                setError("Error fetching data. Please try again later.");
+            }
+        };
 
-        fetch(`https://pokeapi.co/api/v2/pokemon?limit=151&offset=0&name=${pokemonName}`)
-            .then((res) => res.json())
-            .then((data) => setSuggestions(data.results.map((p) => p.name)));
-    }, [pokemonName]);
+        fetchPokemonList();
+    }, [generation]);
 
-    let handleSuggestionClick = (name) => {
-        setPokemonName(name);
-        setSuggestions([]);
+    const fetchPokemonDetails = async (pokemonUrl) => {
+        try {
+            const response = await axios.get(pokemonUrl);
+            const data = response.data;
+            return data;
+        } catch (err) {
+            console.error(err);
+            setError("Error fetching Pokemon details. Please try again later.");
+            return null;
+        }
     };
-
-    useEffect(() => {
-        if (pokemon.weight) {
-            if (pokemon.weight <= 100) {
-                pokemon.weight = 0 + "." + pokemon.weight;
-            } else {
-                pokemon.weight =
-                    pokemon.weight.toString().charAt(0) +
-                    pokemon.weight.toString().charAt(1) +
-                    "." +
-                    pokemon.weight.toString().charAt(2);
-            }
-        }
-
-        if (pokemon.height) {
-            if (pokemon.height <= 9) {
-                pokemon.height = 0 + "." + pokemon.height;
-            } else {
-                pokemon.height =
-                    pokemon.height.toString().charAt(0) +
-                    "." +
-                    pokemon.height.toString().charAt(1) +
-                    pokemon.height.toString().charAt(2);
-            }
-        }
-    }, [pokemon]);
 
     return (
-        <div className="body">
-            <section className="left-side">
-                <form onSubmit={handleSubmit}>
-                    {pokemon.name ? null : <p>Enter a Pokemon name to search</p>}
-                    {pokemon.detail && <p>Error: Pokemon not found</p>}
-                    <input
-                        type="text"
-                        name="pokemonName"
-                        value={pokemonName}
-                        onChange={(e) => setPokemonName(e.target.value)}
-                    />
-                    <button type="submit">Search</button>
-                </form>
-                {loading ? (
-                    <LoadingScreen />
-                ) : error ? (
-                    <p>{error}</p>
-                ) : pokemon.name ? (
-                    <section className="right-side">
-                        <h2>{pokemon.name}</h2>
-                        <h2>Pokedex ID: {pokemon.id}</h2>
-                        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-                        <p>
-                            Height: {pokemon.height}M | Weight: {pokemon.weight}KG
-                        </p>
-                        <p>Types: {pokemon.types.map((t) => t.type.name).join(", ")}</p>
-                        <p>Abilities: {pokemon.abilities.map((a) => a.ability.name).join(", ")}</p>
-                        <p>Base Experience: {pokemon.base_experience}</p>
-                        <p>Stats:</p>
-                        <ul>
-                            {pokemon.stats.map((stat) => (
-                                <li key={stat.stat.name}>
-                                    {stat.stat.name}: {stat.base_stat}
-                                </li>
-                            ))}
-                        </ul>
+        <section>
+            <h2>Choose the generation you want to see all the pokemon off</h2>
+            <select defaultValue="151" value={generation} onChange={handleGenerationChange}>
+                {/* Options... */}
+            </select>
+            {error && <p className="error">{error}</p>}
+            {pokemonList.map(async (pokemon) => {
+                const pokemonDetails = await fetchPokemonDetails(pokemon.url);
+                if (!pokemonDetails) {
+                    return null;
+                }
+
+                return (
+                    <section className="pokemoncard" key={pokemonDetails.name}>
+                        <div className="pokemonInfo">
+                            <h2 className="pokemonName">{pokemonDetails.name}</h2>
+                            <img
+                                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonDetails.id}.png`}
+                                alt={pokemonDetails.name}
+                            />
+                            <p>Types: {pokemonDetails.types.map((t) => t.type.name).join(", ")}</p>
+                            <p>Abilities: {pokemonDetails.abilities.map((a) => a.ability.name).join(", ")}</p>
+                            <p>Base Experience: {pokemonDetails.base_experience}</p>
+                            <p>Stats:</p>
+                            <ul>
+                                {pokemonDetails.stats.map((stat) => (
+                                    <li key={stat.stat.name}>
+                                        {stat.stat.name}: {stat.base_stat}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     </section>
-                ) : null}
-            </section>
-            {suggestions.length > 0 && (
-                <ul className="listOfPokemon">
-                    {suggestions.map((name) => (
-                        <li key={name} onClick={() => handleSuggestionClick(name)}>
-                            {name}
-                        </li>
-                    ))}
-                </ul>
-            )}
-        </div>
+                );
+            })}
+        </section>
     );
 };
 
-export default PokemonInfo;
+export default PokemonList;
