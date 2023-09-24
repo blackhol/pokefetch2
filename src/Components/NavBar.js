@@ -1,7 +1,7 @@
 import {FaBars, FaTimes} from "react-icons/fa"
 import {useRef} from "react";
 import pokefetchLogo from '..//Assets/PokefetchLogo.png';
-import "..//Styles/main.css";
+import "../Pages/main.css";
 import {Link} from "react-router-dom";
 
 function Navbar() {

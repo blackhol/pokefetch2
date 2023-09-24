@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react'
 import GridLoader from "react-spinners/GridLoader";
-import "..//Styles/LoadingScreen.css";
+import "./LoadingScreen.css";
 
 function LoadingScreen() {
     const [loading, setloading] = useState(false);

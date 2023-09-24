@@ -1,14 +1,14 @@
 import react from 'react'
-import "..//Styles/PokemonGenGrid.css";
-import pokemonGEN1 from '..//Assets/PokemonGEN1.jpg';
-import pokemonGEN2 from '..//Assets/PokemonGEN2.jpg';
-import pokemonGEN3 from '..//Assets/PokemonGEN3.jpg';
-import pokemonGEN4 from '..//Assets/PokemonGEN4.jpg';
-import pokemonGEN5 from '..//Assets/PokemonGEN5.jpg';
-import pokemonGEN6 from '..//Assets/PokemonGEN6.jpg';
-import pokemonGEN7 from '..//Assets/PokemonGEN7.jpg';
-import pokemonGEN8 from '..//Assets/PokemonGEN8.jpg';
-import pokemonGEN9 from '..//Assets/PokemonGEN9.jpg';
+import "./PokemonGenGrid.css";
+import pokemonGEN1 from '../../Assets/PokemonGEN1.jpg';
+import pokemonGEN2 from '../../Assets/PokemonGEN2.jpg';
+import pokemonGEN3 from '../../Assets/PokemonGEN3.jpg';
+import pokemonGEN4 from '../../Assets/PokemonGEN4.jpg';
+import pokemonGEN5 from '../../Assets/PokemonGEN5.jpg';
+import pokemonGEN6 from '../../Assets/PokemonGEN6.jpg';
+import pokemonGEN7 from '../../Assets/PokemonGEN7.jpg';
+import pokemonGEN8 from '../../Assets/PokemonGEN8.jpg';
+import pokemonGEN9 from '../../Assets/PokemonGEN9.jpg';
 
 function PokemonGenGrid() {
     const pokemonImages = [

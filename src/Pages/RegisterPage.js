@@ -1,18 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useAuth } from "../Config/AuthContext";
-import Button from "./Button/Button";
 
-function Login() {
+function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { currentUser, login, logout } = useAuth();
+    const { currentUser, register, logout } = useAuth();
 
-    const handleLogin = async () => {
+    const handleRegister = async () => {
         try {
-            await login(email, password);
+            await register(email, password);
             // If successful, you can navigate to another page or display a success message.
         } catch (error) {
-            console.log("Login Error:", error.message);
+            console.log("Registration Error:", error.message);
         }
     };
 
@@ -34,7 +33,7 @@ function Login() {
                 </div>
             ) : (
                 <div>
-                    <h2>Login</h2>
+                    <h2>Register</h2>
                     <input
                         type="email"
                         placeholder="Email"
@@ -47,12 +46,11 @@ function Login() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <button onClick={handleLogin}>Login</button>
-                    <Button URLlink={"http://localhost:3000/Register"} text={"Register"}></Button>
+                    <button onClick={handleRegister}>Register</button>
                 </div>
             )}
         </div>
     );
 }
 
-export default Login;
+export default Register;

@@ -1,5 +1,5 @@
 import react from 'react'
-import "..//Styles/Button.css";
+import "./Button.css";
 
 function Button({color, text, URLlink}) {
     return (
@@ -7,6 +7,7 @@ function Button({color, text, URLlink}) {
             <button className={color}>{text}</button>
         </a>
     )
+
 }
 
 export default Button;
