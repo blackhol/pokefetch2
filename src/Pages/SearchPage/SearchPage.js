@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "../Styles/SearchPage.css";
-import LoadingScreen from "../Components/LoadingScreen";
+import "./SearchPage.css";
+import LoadingScreen from "../../Components/LoadingScreen/LoadingScreen";
+import axios from "axios";
 
 const PokemonInfo = () => {
     const [pokemon, setPokemon] = useState({});
@@ -13,32 +14,27 @@ const PokemonInfo = () => {
         event.preventDefault();
         setLoading(true);
         const name = event.target.elements.pokemonName.value;
-        fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
-            .then((res) => {
-                if (res.ok) return res.json();
-                throw new Error("Pokemon not found");
-            })
-            .then((data) => {
-                setPokemon(data);
-                setPokemonName(name);
-                setSuggestions([]);
-                setError(null);
-                setLoading(false);
-            })
+        axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+             .then(res =>{
+                 setPokemon(res.data);
+                 setPokemonName(name.name);
+                 setSuggestions([]);
+                 setError(null);
+                 setLoading(false);
+             })
             .catch((error) => {
-                console.error(error);
                 setPokemon({});
-                setError("pokemon not found");
+                setError("pokemon not found")
                 setLoading(false);
             });
     };
 
     useEffect(() => {
         if (!pokemonName) return setSuggestions([]);
-
-        fetch(`https://pokeapi.co/api/v2/pokemon?limit=151&offset=0&name=${pokemonName}`)
-            .then((res) => res.json())
-            .then((data) => setSuggestions(data.results.map((p) => p.name)));
+        axios.get(`https://pokeapi.co/api/v2/pokemon?limit=151&offset=0&name=${pokemonName}`)
+             .then(res =>{
+                 setSuggestions(res.data.results.map((p) => p.name));
+             })
     }, [pokemonName]);
 
     let handleSuggestionClick = (name) => {

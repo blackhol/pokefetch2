@@ -1,7 +1,7 @@
 import React from 'react';
-import Button from "../Components/Button";
-import "..//Styles/Home.css";
-import PokemonGenGrid from "../Components/PokemonGenGrid";
+import Button from "../../Components/Button/Button";
+import "./Home.css";
+import PokemonGenGrid from "../../Components/PokemonGenGrid/PokemonGenGrid";
 
 const Home = () => {
 

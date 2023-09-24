@@ -1,23 +1,29 @@
 import React, {useEffect, useState} from "react";
-import "..//Styles/FavoritePokemon.css"; // Add a separate CSS file for styling
+import "./FavoritePokemon.css";
+import LoadingScreen from "../../Components/LoadingScreen/LoadingScreen";
+import PokemonCard from "../../Components/PokemonCard";
 const App = () => {
     const [favoritePokemon, setFavoritePokemon] = useState("");
     const [pokemonData, setPokemonData] = useState([]);
     const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false);
 
     const handleSearch = async () => {
         const searchedPokemon = favoritePokemon.toLowerCase();
         if (pokemonData.find((p) => p.name === searchedPokemon)) {
             setError(`${searchedPokemon} has already been searched`);
         } else {
+            setLoading(true);
             try {
                 const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchedPokemon}`);
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
+                    setLoading(false);
                 }
+                setLoading(false);
                 const data = await response.json();
                 setPokemonData((prevData) => [...prevData, { ...data, isFavorite: false }]);
-                setError("");
+                setError(null);
             } catch (error) {
                 setError(`${searchedPokemon} was not found`);
             }
@@ -52,6 +58,9 @@ const App = () => {
             />
             <button onClick={handleSearch}>Search</button>
             {error && <p>{error}</p>}
+            {loading ? (
+                <LoadingScreen />
+            ) : (
             <section className="pokemon-grid">
                 {pokemonData.map((pokemon) => (
                     <PokemonCard
@@ -61,26 +70,10 @@ const App = () => {
                     />
                 ))}
             </section>
+                )}
         </div>
     );
 };
 
-const PokemonCard = ({ pokemon, onFavoriteToggle }) => {
-    const { name, sprites, height, weight, types, isFavorite } = pokemon;
-
-    const handleFavoriteClick = () => {
-        onFavoriteToggle(name);
-    };
-
-    return (
-        <div className={`pokemon-card ${isFavorite ? "favorite" : ""}`} onClick={handleFavoriteClick}>
-            <h2>{name}</h2>
-            <img src={sprites.front_default} alt={name} />
-            <p>Height: {height}</p>
-            <p>Weight: {weight}</p>
-            <p>Types: {types.map((type) => type.type.name).join(", ")}</p>
-        </div>
-    );
-};
 
 export default App;
