@@ -1,8 +1,9 @@
 import {FaBars, FaTimes} from "react-icons/fa"
 import {useRef} from "react";
-import pokefetchLogo from '..//Assets/PokefetchLogo.png';
-import "../Pages/main.css";
+import pokefetchLogo from '../../Assets/PokefetchLogo.png';
+import "../../Pages/main.css";
 import {Link} from "react-router-dom";
+import Button from "../Button/Button";
 
 function Navbar() {
     const navRef = useRef();
@@ -23,8 +24,11 @@ function Navbar() {
                 <Link to="/AllPokemon">All Pokemon</Link>
                 <Link to="/FavoritePokemon">Favorite Pokemon</Link>
                 <Link to="/LogInPage">LogIn</Link>
-                <button className="nav-btn nav-close-btn " onClick={showNavbar}>
+                <Button className={"nav-btn nav-close-btn"} onClickFunction={showNavbar}>
                     <FaTimes/>
+                </Button>
+                <button className="nav-btn nav-close-btn " onClick={showNavbar}>
+                    {/*<FaTimes/>*/}
                 </button>
             </nav>
             <button className="nav-btn nav-close-btn" onClick={showNavbar}>

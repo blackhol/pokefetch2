@@ -16,13 +16,14 @@ Users
 Admin
 Username: admin@gmail.com	
 Password: AdminTest
+
 Installatie Pokefetch
 Download het ZIP bestand”pokefetch2” en pak deze uit op uw bureaublad
 Klik met uw rechtermuisknop op de map en selecteer “Open Folder as WebStorm Project(zie afbeelding)
 
 Selecteer onderin het beeldscherm de knop terminal(als deze er is niet druk dan  op shift+f12)
 
-5. In dit terminal type u : npm install
+In dit terminal type u : npm install
 Wacht op de installatie en daarna typt u npm start
 
 Gefeliciteerd u heeft Pokefetch geïnstalleerd op uw systeem, er zal automatisch een browser worden opgestart met de webapp

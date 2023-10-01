@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { useAuth } from "../Config/AuthContext";
-import Button from "./Button/Button";
+import React, { useState } from "react";
+import { useAuth } from "../../Config/AuthContext";
+import Button from "../Button/Button";
+import InputField from "../InputField/InputField";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -10,7 +11,6 @@ function Login() {
     const handleLogin = async () => {
         try {
             await login(email, password);
-            // If successful, you can navigate to another page or display a success message.
         } catch (error) {
             console.log("Login Error:", error.message);
         }
@@ -19,7 +19,6 @@ function Login() {
     const handleLogout = async () => {
         try {
             await logout();
-            // If successful, you can navigate to another page or display a success message.
         } catch (error) {
             console.log("Logout Error:", error.message);
         }
@@ -30,24 +29,26 @@ function Login() {
             {currentUser ? (
                 <div>
                     <h2>Welcome, {currentUser.email}!</h2>
-                    <button onClick={handleLogout}>Logout</button>
+                    <Button onClickFunction={handleLogout} text={"Logout"}></Button>
                 </div>
             ) : (
                 <div>
                     <h2>Login</h2>
-                    <input
-                        type="email"
-                        placeholder="Email"
+                    <InputField
+                        type={"email"}
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password"
+                        label={"Email"}
+                        placeholder={"Email"}
+                        onChange={(e) => setEmail(e.target.value)}>
+                    </InputField>
+                    <InputField
+                        type={"password"}
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <button onClick={handleLogin}>Login</button>
+                        label={"Password"}
+                        placeholder={"Password"}
+                        onChange={(e) => setPassword(e.target.value)}>
+                    </InputField>
+                    <Button onClickFunction={handleLogin} text={"Login"}></Button>
                     <Button URLlink={"http://localhost:3000/Register"} text={"Register"}></Button>
                 </div>
             )}

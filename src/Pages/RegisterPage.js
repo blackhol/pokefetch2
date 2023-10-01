@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../Config/AuthContext";
+import Button from "../Components/Button/Button";
+import InputField from "../Components/InputField/InputField";
 
 function Register() {
     const [email, setEmail] = useState("");
@@ -29,24 +31,26 @@ function Register() {
             {currentUser ? (
                 <div>
                     <h2>Welcome, {currentUser.email}!</h2>
-                    <button onClick={handleLogout}>Logout</button>
+                    <Button onClickFunction={handleLogout} text={"Logout"}></Button>
                 </div>
             ) : (
                 <div>
                     <h2>Register</h2>
-                    <input
-                        type="email"
-                        placeholder="Email"
+                    <InputField
+                        type={"email"}
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <input
-                        type="password"
-                        placeholder="Password"
+                        label={"Email"}
+                        placeholder={"Email"}
+                        onChange={(e) => setEmail(e.target.value)}>
+                    </InputField>
+                    <InputField
+                        type={"password"}
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <button onClick={handleRegister}>Register</button>
+                        label={"Password"}
+                        placeholder={"Password"}
+                        onChange={(e) => setPassword(e.target.value)}>
+                    </InputField>
+                    <Button onClickFunction={handleRegister} text={"Register"}></Button>
                 </div>
             )}
         </div>
