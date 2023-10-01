@@ -1,4 +1,3 @@
-import react from 'react'
 import "./PokemonGenGrid.css";
 import pokemonGEN1 from '../../Assets/PokemonGEN1.jpg';
 import pokemonGEN2 from '../../Assets/PokemonGEN2.jpg';

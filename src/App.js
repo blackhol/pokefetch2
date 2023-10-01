@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "./Components/NavBar";
+import NavBar from "./Components/NavBar/NavBar";
 import { Route, Routes } from "react-router-dom";
 import SearchPage from "./Pages/SearchPage/SearchPage";
 import FavoritePokemon from "./Pages/FavoritePokemon/FavoritePokemon";

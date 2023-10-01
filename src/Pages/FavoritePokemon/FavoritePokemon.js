@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from "react";
 import "./FavoritePokemon.css";
 import LoadingScreen from "../../Components/LoadingScreen/LoadingScreen";
-import PokemonCard from "../../Components/PokemonCard";
+import PokemonCard from "../../Components/PokemonCard/PokemonCard";
+import Button from "../../Components/Button/Button";
+import InputField from "../../Components/InputField/InputField";
 const App = () => {
     const [favoritePokemon, setFavoritePokemon] = useState("");
     const [pokemonData, setPokemonData] = useState([]);
@@ -23,7 +25,7 @@ const App = () => {
                 setLoading(false);
                 const data = await response.json();
                 setPokemonData((prevData) => [...prevData, { ...data, isFavorite: false }]);
-                setError(null);
+                setError("");
             } catch (error) {
                 setError(`${searchedPokemon} was not found`);
             }
@@ -51,12 +53,12 @@ const App = () => {
     return (
         <div>
             <h1>My Favorite Pokémon</h1>
-            <input
-                type="text"
+            <InputField
+                type={"text"}
                 value={favoritePokemon}
                 onChange={(e) => setFavoritePokemon(e.target.value)}
-            />
-            <button onClick={handleSearch}>Search</button>
+            ></InputField>
+            <Button onClickFunction={handleSearch} text={"Search"}></Button>
             {error && <p>{error}</p>}
             {loading ? (
                 <LoadingScreen />

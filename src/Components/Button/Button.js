@@ -1,9 +1,8 @@
-import react from 'react'
 import "./Button.css";
 
-function Button({color, text, URLlink}) {
+function Button({color, text, URLlink, onClickFunction, buttonType, className}) {
     return (
-        <a href={URLlink}>
+        <a className={className} type={buttonType} onClick={onClickFunction} href={URLlink}>
             <button className={color}>{text}</button>
         </a>
     )

@@ -6,7 +6,7 @@ import LoadingScreen from "../LoadingScreen/LoadingScreen";
 const PokemonList = () => {
     let [pokemonList, setPokemonList] = useState([]);
     const [generation, setGeneration] = useState("151");
-    const [error, setError] = useState(null);
+    const [error, setError] = useState("");
     let [loading, setLoading] = useState(false);
 
     const handleGenerationChange = (event) => {
@@ -26,7 +26,7 @@ const PokemonList = () => {
     };
 
     useEffect(() => {
-        setError(null);
+        setError("");
         setLoading(true);
         fetchPokemonList().then(() => {});
     },[generation]);
