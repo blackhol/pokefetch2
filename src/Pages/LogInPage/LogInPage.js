@@ -1,6 +1,6 @@
 import React from 'react';
-import LogIn from '../Components/LogIn/LogIn';
-import {AuthProvider} from "../Config/AuthContext"
+import LogIn from '../../Components/LogIn/LogIn';
+import {AuthProvider} from "../../Config/AuthContext"
 
 
 const App = () => (

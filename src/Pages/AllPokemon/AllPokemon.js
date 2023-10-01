@@ -1,5 +1,5 @@
 import React from 'react';
-import PokemonList from '../Components/GetAllPokemon/GetAllPokemon';
+import PokemonList from '../../Components/GetAllPokemon/GetAllPokemon';
 
 const App = () => (
     <article>

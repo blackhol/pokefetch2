@@ -21,6 +21,16 @@ export function AuthProvider({ children }) {
         return () => unsubscribe();
     }, []);
 
+    const loggedIn = () => {
+        if (currentUser != null) {
+            console.log("user is logged in");
+            return true;
+        } else {
+            console.log("user is not logged in");
+            return false;
+        }
+    };
+
     const register = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password);
     };
@@ -35,6 +45,7 @@ export function AuthProvider({ children }) {
 
     const value = {
         currentUser,
+        loggedIn,
         register,
         login,
         logout,
