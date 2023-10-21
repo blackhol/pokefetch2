@@ -22,7 +22,7 @@ export function AuthProvider({ children }) {
     }, []);
 
     const loggedIn = () => {
-        if (currentUser != null) {
+        if (currentUser !== null) {
             console.log("user is logged in");
             return true;
         } else {

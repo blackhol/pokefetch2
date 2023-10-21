@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="afc5ed3f-078f-421b-b81c-dd4db0733ec5" name="Changes" comment="routes verbeterd en nu kan je alleen naar favorite pokemons wanneer je bent ingelogd. ook zijn de inlog en registreren verbeterd">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/pokefetch2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Config/AuthContext.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Config/AuthContext.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="protected_route_verbeteren" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="6a6dd314-7e65-4e4a-8b60-38cb3346714e" />
+        <option name="url" value="https://github.com/blackhol/pokefetch2.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2QtLmA4i4NVTWlBvMrTVsv2pCgO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/kilia/Desktop/pokefetch v3 herkansing Kilian Faas&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;C:/Users/kilia/IdeaProjects/pokefetch2/node_modules/react-scripts&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.1.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\kilia\IdeaProjects\pokefetch2\src\Pages\LogInPage" />
+      <recent name="C:\Users\kilia\IdeaProjects\pokefetch2\src\Pages\RegisterPage" />
+      <recent name="C:\Users\kilia\IdeaProjects\pokefetch2\src\Pages\AllPokemon" />
+      <recent name="C:\Users\kilia\IdeaProjects\pokefetch2\src\Pages\NotFound" />
+      <recent name="C:\Users\kilia\IdeaProjects\pokefetch2\src\Components\LogIn" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="pokefetch2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="pokefetch2" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="afc5ed3f-078f-421b-b81c-dd4db0733ec5" name="Changes" comment="" />
+      <created>1686168089476</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1686168089476</updated>
+      <workItem from="1686168090577" duration="808000" />
+      <workItem from="1689151026534" duration="1346000" />
+      <workItem from="1689430494136" duration="4588000" />
+      <workItem from="1689466143671" duration="19854000" />
+      <workItem from="1689892803243" duration="11766000" />
+      <workItem from="1689934767601" duration="2819000" />
+      <workItem from="1689941554563" duration="128000" />
+      <workItem from="1689941698228" duration="9959000" />
+      <workItem from="1689975390923" duration="911000" />
+      <workItem from="1689977255950" duration="582000" />
+      <workItem from="1690035118419" duration="256000" />
+      <workItem from="1690050923925" duration="165000" />
+      <workItem from="1693309301520" duration="1318000" />
+      <workItem from="1695113663919" duration="23878000" />
+      <workItem from="1695594878766" duration="13576000" />
+      <workItem from="1696119190578" duration="4195000" />
+      <workItem from="1696160955030" duration="5622000" />
+      <workItem from="1696188096894" duration="6542000" />
+      <workItem from="1697919821515" duration="627000" />
+      <workItem from="1697921744646" duration="110000" />
+      <workItem from="1697921864679" duration="282000" />
+    </task>
+    <task id="LOCAL-00001" summary="button en pokemenGENgrid">
+      <created>1689678622785</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1689678622785</updated>
+    </task>
+    <task id="LOCAL-00002" summary="reworking all div to semantic ellements">
+      <created>1689898566268</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1689898566268</updated>
+    </task>
+    <task id="LOCAL-00003" summary="loading screen element(because of fast loading barely visible">
+      <created>1689930135379</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1689930135379</updated>
+    </task>
+    <task id="LOCAL-00004" summary="loading screen element(because of fast loading barely visible">
+      <created>1689934316111</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1689934316111</updated>
+    </task>
+    <task id="LOCAL-00005" summary="loading screen element(because of fast loading barely visible">
+      <created>1689946945448</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1689946945448</updated>
+    </task>
+    <task id="LOCAL-00006" summary="making the favoritepokemon work beter and saving the pokemons in a local file because of scope">
+      <created>1689952076756</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1689952076756</updated>
+    </task>
+    <task id="LOCAL-00007" summary="last edits to make sure its a async function">
+      <created>1689976678552</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1689976678552</updated>
+    </task>
+    <task id="LOCAL-00008" summary="bijna alle API calls omgezet naar axios calls en de mappen structuur aangepast van de app">
+      <created>1695598991948</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1695598991948</updated>
+    </task>
+    <task id="LOCAL-00009" summary="component omgebouwd en nieuwe aan gemaakt en deze ook meteen ingevoerd">
+      <created>1696119024776</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1696119024776</updated>
+    </task>
+    <task id="LOCAL-00010" summary="routes verbeterd en nu kan je alleen naar favorite pokemons wanneer je bent ingelogd. ook zijn de inlog en registreren verbeterd">
+      <created>1696191868791</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1696191868791</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="button en pokemenGENgrid" />
+    <MESSAGE value="reworking all div to semantic ellements" />
+    <MESSAGE value="loading screen element(because of fast loading barely visible" />
+    <MESSAGE value="making the favoritepokemon work beter and saving the pokemons in a local file because of scope" />
+    <MESSAGE value="last edits to make sure its a async function" />
+    <MESSAGE value="bijna alle API calls omgezet naar axios calls en de mappen structuur aangepast van de app" />
+    <MESSAGE value="component omgebouwd en nieuwe aan gemaakt en deze ook meteen ingevoerd" />
+    <MESSAGE value="routes verbeterd en nu kan je alleen naar favorite pokemons wanneer je bent ingelogd. ook zijn de inlog en registreren verbeterd" />
+    <option name="LAST_COMMIT_MESSAGE" value="routes verbeterd en nu kan je alleen naar favorite pokemons wanneer je bent ingelogd. ook zijn de inlog en registreren verbeterd" />
+  </component>
+</project>
