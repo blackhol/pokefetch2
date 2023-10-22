@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import "./GetAllPokemon.css";
 import axios from "axios";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
@@ -14,11 +14,11 @@ const PokemonList = () => {
     };
     const fetchPokemonList = async () => {
         axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${generation}`)
-            .then((res)=>{
+            .then((res) => {
                 setLoading(false)
                 setPokemonList(res.data.results);
             })
-            .catch((err) =>{
+            .catch((err) => {
                 console.error(err)
                 setError(err);
                 setLoading(false);
@@ -28,8 +28,9 @@ const PokemonList = () => {
     useEffect(() => {
         setError("");
         setLoading(true);
-        fetchPokemonList().then(() => {});
-    },[generation]);
+        fetchPokemonList().then(() => {
+        });
+    }, [generation]);
 
     return (
         <section>
@@ -47,7 +48,7 @@ const PokemonList = () => {
             </select>
             {error && <p className="error">{error}</p>}
             {loading ? (
-                <LoadingScreen />
+                <LoadingScreen/>
             ) : (
                 <div className="pokemonList">
                     {pokemonList.map((pokemon) => (

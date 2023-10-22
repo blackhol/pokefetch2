@@ -18,13 +18,13 @@ const PokemonInfo = () => {
         setLoading(true);
         const name = event.target.elements.pokemonName.value;
         axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-             .then(res =>{
-                 setPokemon(res.data);
-                 setPokemonName(name.name);
-                 setSuggestions([]);
-                 setError("");
-                 setLoading(false);
-             })
+            .then(res =>{
+                setPokemon(res.data);
+                setPokemonName(name.name);
+                setSuggestions([]);
+                setError("");
+                setLoading(false);
+            })
             .catch((error) => {
                 setPokemon({});
                 setError("pokemon not found")
@@ -35,15 +35,16 @@ const PokemonInfo = () => {
     useEffect(() => {
         if (!pokemonName) return setSuggestions([]);
         axios.get(`https://pokeapi.co/api/v2/pokemon?limit=151&offset=0&name=${pokemonName}`)
-             .then(res =>{
-                 setSuggestions(res.data.results.map((p) => p.name));
-             })
+            .then(res =>{
+                setSuggestions(res.data.results.map((p) => p.name));
+            })
     }, [pokemonName]);
 
     let handleSuggestionClick = (name) => {
         setPokemonName(name);
         setSuggestions([]);
     };
+
     return (
         <div className="body">
             <section className="left-side">
@@ -51,10 +52,10 @@ const PokemonInfo = () => {
                     {pokemon.name ? null : <p>Enter a Pokemon name to search</p>}
                     {pokemon.detail && <p>Error: Pokemon not found</p>}
                     <InputField
-                    type={"text"}
-                    name={"pokemonName"}
-                    value={pokemonName}
-                    onChange={(e) => setPokemonName(e.target.value)}
+                        type={"text"}
+                        name={"pokemonName"}
+                        value={pokemonName}
+                        onChange={(e) => setPokemonName(e.target.value)}
                     ></InputField>
                     <Button buttonType={"submit"} text={"Search"}></Button>
                 </form>
@@ -67,13 +68,15 @@ const PokemonInfo = () => {
                 ) : null}
             </section>
             {suggestions.length > 0 && (
-                <ul className="listOfPokemon">
-                    {suggestions.map((name) => (
-                        <li key={name} onClick={() => handleSuggestionClick(name)}>
-                            {name}
-                        </li>
-                    ))}
-                </ul>
+                <div className="suggestions-container">
+                    <ul className="listOfPokemon">
+                        {suggestions.map((name) => (
+                            <li key={name} onClick={() => handleSuggestionClick(name)}>
+                                {name}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             )}
         </div>
     );
