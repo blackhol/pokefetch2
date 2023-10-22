@@ -1,12 +1,12 @@
 import "./Button.css";
-
+import {Link} from "react-router-dom";
 function Button({color, text, URLlink, onClickFunction, buttonType, className}) {
-    return (
-        <a className={className} type={buttonType} onClick={onClickFunction} href={URLlink}>
-            <button className={color}>{text}</button>
-        </a>
+    return(
+        <Link to={URLlink}>
+            <button className={className} type={buttonType} onClick={onClickFunction}>
+                {text}
+            </button>
+        </Link>
     )
-
 }
-
 export default Button;
