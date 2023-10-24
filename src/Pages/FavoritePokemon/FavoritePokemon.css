@@ -11,5 +11,17 @@
 }
 
 .pokemon-card.favorite {
-    background-color: cornflowerblue; /* Light pink background for favorite Pokemon */
+    background-color: cornflowerblue;
 }
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

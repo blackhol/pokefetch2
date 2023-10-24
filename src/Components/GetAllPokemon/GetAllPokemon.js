@@ -13,16 +13,16 @@ const PokemonList = () => {
         setGeneration(event.target.value);
     };
     const fetchPokemonList = async () => {
-        axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${generation}`)
-            .then((res) => {
-                setLoading(false)
-                setPokemonList(res.data.results);
-            })
-            .catch((err) => {
-                console.error(err)
-                setError(err);
-                setLoading(false);
-            })
+        setLoading(true)
+        try {
+            const result = await axios.get(`https://pokeapi.co/api/v2/pokemon?limit=${generation}`)
+            setLoading(false);
+            setPokemonList(result.data.results);
+        }
+        catch (error){
+            setError("kan de pokemonlijsten niet ophalen");
+            setLoading(false);
+        }
     };
 
     useEffect(() => {

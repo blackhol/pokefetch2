@@ -8,7 +8,7 @@ import LogInPage from "./Pages/LogInPage/LogInPage";
 import Home from "./Pages/Home/Home";
 import RegisterPage from "./Pages/RegisterPage/RegisterPage";
 import NotFound from "./Pages/NotFound/NotFound";
-import {useAuth} from "./Config/AuthContext";
+import {useAuth} from "./Context/AuthContext";
 
 
 function App() {
