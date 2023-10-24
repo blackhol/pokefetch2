@@ -9,7 +9,7 @@ function Register() {
     const [password, setPassword] = useState("");
     const { register} = useAuth();
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
+    const [error, setError] = useState(null);
     const [message,setMessage] = useState("")
 
     const handleRegister = async () => {

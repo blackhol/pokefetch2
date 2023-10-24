@@ -9,7 +9,7 @@ function Login() {
     const [password, setPassword] = useState("");
     const { currentUser, login, logout } = useAuth();
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
+    const [error, setError] = useState(null);
 
     const handleLogin = async () => {
         try {
