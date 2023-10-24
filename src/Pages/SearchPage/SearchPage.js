@@ -10,7 +10,7 @@ const PokemonInfo = () => {
     let [pokemonName, setPokemonName] = useState("");
     const [suggestions, setSuggestions] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState("");
+    const [error, setError] = useState(null);
 
     async function GetPokemon(pokemonName){
         try{

@@ -9,7 +9,7 @@ import axios from "axios";
 const App = () => {
     const [favoritePokemon, setFavoritePokemon] = useState("");
     const [pokemonData, setPokemonData] = useState([]);
-    const [error, setError] = useState("");
+    const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
     const handleSearch = async () => {
